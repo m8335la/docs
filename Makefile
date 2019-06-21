@@ -72,6 +72,66 @@ clean: ## Remove build artifacts from PDF output dir
 .PHONY: pdf
 pdf: pdf-user pdf-admin pdf-developer ## Generate PDF version of the manuals
 
+.PHONY: docbook-user
+docbook-user: 
+	asciidoctor \
+		-b docbook5 \
+		-a examplesdir=modules/user_manual/examples \
+		-a imagesdir=modules/user_manual/assets/images \
+		-a revnumber=$(VERSION) \
+		-a revdate=$(REVDATE) \
+		--base-dir $(CURDIR) \
+		--out-file $(OUTPUT_USER)/ownCloud_User_Manual.dbk \
+		books/ownCloud_User_Manual.adoc
+
+.PHONY: docbook-admin
+docbook-admin:
+	asciidoctor \
+		-b docbook5 \
+		-a examplesdir=modules/admin_manual/examples \
+		-a imagesdir=modules/admin_manual/assets/images \
+		-a revnumber=$(VERSION) \
+		-a revdate=$(REVDATE) \
+		--base-dir $(CURDIR) \
+		--out-file $(OUTPUT_ADMIN)/ownCloud_Admin_Manual.dbk \
+		books/ownCloud_Admin_Manual.adoc
+
+.PHONY: docbook-developer
+docbook-developer:
+	asciidoctor \
+		-b docbook5 \
+		-a examplesdir=modules/developer_manual/examples \
+		-a imagesdir=modules/developer_manual/assets/images \
+		-a revnumber=$(VERSION) \
+		-a revdate=$(REVDATE) \
+		--base-dir $(CURDIR) \
+		--out-file $(OUTPUT_DEVELOPER)/ownCloud_Developer_Manual.dbk \
+		books/ownCloud_Developer_Manual.adoc
+
+.PHONY: docx-user
+docx-user: docbook-user
+	pandoc \
+	-f docbook \
+	-t docx \
+	-o $(OUTPUT_USER)//ownCloud_User_Manual.docx \
+	$(OUTPUT_USER)//ownCloud_User_Manual.dbk
+
+.PHONY: docx-developer
+docx-developer: docbook-developer
+	pandoc \
+	-f docbook \
+	-t docx \
+	-o $(OUTPUT_DEVELOPER)/ownCloud_Developer_Manual.docx \
+	$(OUTPUT_DEVELOPER)/ownCloud_Developer_Manual.dbk
+
+.PHONY: docx-admin
+docx-admin: docbook-admin
+	pandoc \
+	-f docbook \
+	-t docx \
+	-o $(OUTPUT_ADMIN)/ownCloud_Admin_Manual.docx \
+	$(OUTPUT_ADMIN)/ownCloud_Admin_Manual.dbk
+
 .PHONY: pdf-user
 pdf-user: ## Generate PDF version of the user manual
 	asciidoctor-pdf \
