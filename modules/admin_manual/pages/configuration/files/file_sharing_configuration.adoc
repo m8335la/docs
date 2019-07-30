@@ -101,10 +101,13 @@ links via *Twitter*, *Facebook*, *Google+*, *Diaspora*, and email.
 image:configuration/files/sharing/sharing-files-via-social-media.png[ownCloud social media sharing links]
 
 === Automatically accept new incoming local user shares
-Disabling this option activates the "Pending Shares" feature. Users will be notified and have to accept new
-incoming user shares before they appear in the file list and are available for access giving them more control
-over their account. More information about
-xref:release_notes.adoc#pending-shares[pending shares] can be found in the release notes.
+
+If a user disables btn:[Automatically accept new incoming local user shares], located under menu:Settings[Sharing (admin)], xref:release_notes.adoc#pending-shares[the _Pending Shares_ feature] is activated.
+The _Pending Shares_ feature gives users more control over their account, and ensures that it is not possible to share data with a user without their permission.
+
+When active, users will be notified when local users share content with them. 
+This allows them to either accept or reject the shared content.
+If a user accepts the shared content, it then appears in their file list and is available for access.
 
 === Allow resharing
 
