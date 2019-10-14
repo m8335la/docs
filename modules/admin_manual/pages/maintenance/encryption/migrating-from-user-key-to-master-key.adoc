@@ -15,7 +15,7 @@ The decryption workflow described here works for both MySQL and SQLite based dat
   * The admin recovery password needs to be activated during creation of new accounts for all users (settings, personal, encryption).
   * The admin recovery password must be available for the ownCloud administrator
 
-It is possible that some or all users see a re-synchronisation of their data from the server to the desktop client - especially for shared folders.
+It is possible that some or all users to see a re-synchronisation of their data from the server to the desktop client - especially for shared folders.
 A notification to the users (e.g. through the https://marketplace.owncloud.com/apps/announcementcenter[announcement app]) prior to the migration process is recommended.
 
 If you need to migrate from User Key-based to Master Key-based encryption, there are several steps that you need to follow to ensure a smooth and complete transition:
@@ -39,7 +39,7 @@ You can see an example of calling the commands listed below, configured to requi
   {occ-command-example-prefix} app:disable --no-interaction encryption
 ----
 
-NOTE: The decryption of the files by the system administration requires the current passwords of all users!
+NOTE: Decryption of files by the system administrator requires the current passwords of every user!
 
 == Remove the Encryption Records from the ownCloud Database
 
